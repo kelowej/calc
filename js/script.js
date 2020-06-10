@@ -1,13 +1,14 @@
-'use strict'
 
-function getNumberFromUser(){
+
+function getNumberFromUser() {
     let input = prompt('Please, enter a number')
     let number = Number(input)
-    if (isNaN(number)){
+    if (isNaN(number)) {
         alert('It is not a number, please try again.')
-        getNumberFromUser()
+        return getNumberFromUser()
+    } else { 
+        return number 
     }
-    return number
 }
 function showResult(result) {
     return alert('The result is ' + result)
@@ -30,9 +31,42 @@ function getOperatorFromUser() {
 
 
 }
-function getConfirmationFromUser() { }
-function getConfirmationFromUserAndProceed() { }
-function calculate() { }
+function getConfirmationFromUser() {
+    return confirm('Would you like to continue?')
+}
+function getConfirmationFromUserAndProceed(result) {
+    const confirmation = getConfirmationFromUser()
+    if (confirmation) {
+        mainLoop(result)
+    } else {
+        showResult(result)
+    }
+}
+function calculate(operator, a, b) {
+    switch (operator) {
+        case '+':
+            return a + b
+        case '-':
+            return a - b
+        case '*':
+            return a * b
+        case '/':
+            return a / b
+    }
+}
+
+function mainLoop(result) {
+    const operator = getOperatorFromUser()
+    const number = getNumberFromUser()
+
+    const newResult = calculate(operator, result, number)
 
 
-const number = getNumberFromUser()
+    getConfirmationFromUserAndProceed(newResult)
+
+    
+
+}
+
+const result = getNumberFromUser()
+getConfirmationFromUserAndProceed(result)
