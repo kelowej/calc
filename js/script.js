@@ -1,13 +1,14 @@
 
 
+const calculator = (function (){
 function getNumberFromUser() {
     let input = prompt('Please, enter a number')
     let number = Number(input)
     if (isNaN(number)) {
         alert('It is not a number, please try again.')
         return getNumberFromUser()
-    } else { 
-        return number 
+    } else {
+        return number
     }
 }
 function showResult(result) {
@@ -64,9 +65,15 @@ function mainLoop(result) {
 
     getConfirmationFromUserAndProceed(newResult)
 
-    
+
 
 }
 
-const result = getNumberFromUser()
-getConfirmationFromUserAndProceed(result)
+function start() {
+    const result = getNumberFromUser()
+    getConfirmationFromUserAndProceed(result)
+}
+
+return start
+
+})()
