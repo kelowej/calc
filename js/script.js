@@ -8,7 +8,9 @@ function getNumberFromUser(){
     }
     return number
 }
-function showResult(result){}
+function showResult(result){
+    return alert('The result is ' + result)
+}
 function getOperatorFromUser(){}
 function getConfirmationFromUser(){}
 function getConfirmationFromUserAndProceed(){}
